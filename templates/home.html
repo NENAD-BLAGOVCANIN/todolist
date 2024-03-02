@@ -26,42 +26,22 @@
 <div class="container">
 
     <div class="row">
+        
+        {% for task in tasks %}
+
         <div class="col-md-3 py-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Do homework 9:00</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
+                    <h5 class="card-title">{{ task[1] }}</h5>
+                    <p class="card-text">
+                        {{ task[2] }}
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 py-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Make breakfast 10:00</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 py-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Work 11:00</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 py-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Workout 12:00</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the card's content.</p>
-                </div>
-            </div>
-        </div>
+        
+        {% endfor %}
+
     </div>
 
     <div class="py-3">
@@ -71,30 +51,29 @@
 
 </div>
 
-
-<div class="modal" id="addTaskModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Task</h5>
-                <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="">
+<form action="/add-task" method="POST">
+    <div class="modal" id="addTaskModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Task</h5>
+                    <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <label for="">Title:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="name" class="form-control">
                     <label for="">Description:</label>
-                    <input type="text" class="form-control">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                    <input type="text" name="description" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 {% endblock %}
